@@ -28,8 +28,11 @@ class ContatoUI:
         op = 0 
         while op != 6:
             op = ContatoUI.menu()
-            if op == 1: ContatoUI.inserir()
-            if op == 2: ContatoUI.listar()
+            if op == 1: ContatoUI.inserir()   # C reate
+            if op == 2: ContatoUI.listar()    # R ead
+            if op == 3: ContatoUI.atualizar() # U pdate
+            if op == 4: ContatoUI.excluir()   # D elete
+            if op == 5: ContatoUI.pesquisar()
     @staticmethod
     def menu():
         print("1-Inserir 2-Listar 3-Atualizar 4-Excluir 5-Pesquisar 6-Fim")
@@ -48,5 +51,38 @@ class ContatoUI:
         if len(cls.contatos) == 0: print("Nenhum contato na agenda")
         else: 
             for x in cls.contatos: print(x)    
+    @classmethod
+    def listar_id(cls, id):
+        # procurar um contato na lista com o id informado
+        for x in cls.contatos:
+            if x.get_id() == id: return x
+        return None    
+    @classmethod
+    def atualizar(cls):
+        ContatoUI.listar()
+        id = int(input("Informe o id do contato a ser alterado: "))
+        x = ContatoUI.listar_id(id)
+        if x != None:
+            # remove o contato atual
+            cls.contatos.remove(x)
+            # insere um novo contato com os dados atualizados
+            nome = input("Informe o novo nome: ")
+            email = input("Informe o novo e-mail: ")
+            fone = input("Informe o novo telefone: ")
+            x = Contato(id, nome, email, fone)
+            cls.contatos.append(x)            
+    @classmethod
+    def excluir(cls):
+        ContatoUI.listar()
+        id = int(input("Informe o id do contato a ser excluído: "))
+        x = ContatoUI.listar_id(id)
+        if x != None:
+            # remove o contato atual
+            cls.contatos.remove(x)
+    @classmethod
+    def pesquisar(cls):
+        iniciais = input("Informe as iniciais do contato: ")
+        for x in cls.contatos:
+            if x.get_nome().startswith(iniciais): print(x)
 
 ContatoUI.main()    
