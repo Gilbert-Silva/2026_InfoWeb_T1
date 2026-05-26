@@ -48,6 +48,10 @@ class PacienteUI:
             op = PacienteUI.menu()
             if op == 1: PacienteUI.inserir()
             if op == 2: PacienteUI.listar()
+            if op == 3: PacienteUI.atualizar()
+            if op == 4: PacienteUI.excluir()
+            if op == 5: PacienteUI.pesquisar()
+            if op == 6: PacienteUI.aniversariantes()
 
     @staticmethod
     def menu():
@@ -67,5 +71,40 @@ class PacienteUI:
     @classmethod
     def listar(cls):                
         for x in cls.__pacientes: print(x, x.idade())
+
+    @classmethod
+    def atualizar(cls):
+        for x in cls.__pacientes: print(x)
+        id = int(input("Informe o id do paciente a ser atualizado: "))
+        for x in cls.__pacientes:
+            if x.get_id() == id:
+                nome = input("Informe o novo nome: ")
+                cpf = input("Informe o novo CPF: ")
+                fone = input("Informe o novo telefone: ")
+                nasc = datetime.strptime(input("Informe a nova data de nascimento: "), "%d/%m/%Y")
+                x.set_nome(nome)
+                x.set_cpf(cpf)
+                x.set_telefone(fone)
+                x.set_nascimento(nasc)
+
+    @classmethod
+    def excluir(cls):
+        for x in cls.__pacientes: print(x)
+        id = int(input("Informe o id do paciente a ser excluído: "))
+        for x in cls.__pacientes:
+            if x.get_id() == id:
+                cls.__pacientes.remove(x)
+
+    @classmethod
+    def pesquisar(cls):
+        s = input("Informe as iniciais do nome: ")
+        for x in cls.__pacientes:
+            if x.get_nome().startswith(s): print(x)
+
+    @classmethod
+    def aniversariantes(cls):
+        m = int(input("Informe o mês para a lista de aniversariantes (1-12): "))
+        for x in cls.__pacientes:
+            if x.get_nascimento().month == m: print(x)
 
 PacienteUI.main()
