@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 class Cliente:
     def __init__(self, id, nome, email, fone):
@@ -38,6 +39,8 @@ class Cliente:
 
 class ClienteUI:
     __objetos = []
+    __clientes_json = Path(__file__).resolve().parent / "clientes.json"
+
     @staticmethod
     def main():
         ClienteUI.abrir()
@@ -56,14 +59,14 @@ class ClienteUI:
 
     @classmethod
     def salvar(cls):    
-        arquivo = open("clientes.json", mode = "w")
+        arquivo = open(cls.__clientes_json, mode = "w")
         json.dump(cls.__objetos, arquivo, default = Cliente.to_json, indent = 2)
         arquivo.close()
 
     @classmethod
     def abrir(cls):  
         try:  
-            arquivo = open("clientes.json", mode = "r")
+            arquivo = open(cls.__clientes_json, mode = "r")
             list_dic = json.load(arquivo)
             arquivo.close()
             cls.__objetos = []
@@ -109,6 +112,9 @@ class ClienteUI:
             if x.get_id() == id:
                 cls.__objetos.remove(x)
                 ClienteUI.salvar()
+
+from pathlib import Path
+print(Path(__file__).parent)
 
 ClienteUI.main()
 
