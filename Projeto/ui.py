@@ -6,10 +6,10 @@ class UI:
         op = 0
         while op != 9:
             op = UI.menu()
-            if op == 1: UI.inserir()
-            if op == 2: UI.listar()
-            if op == 3: UI.atualizar()
-            if op == 4: UI.excluir()
+            if op == 1: UI.cliente_inserir()
+            if op == 2: UI.cliente_listar()
+            if op == 3: UI.cliente_atualizar()
+            if op == 4: UI.cliente_excluir()
 
     @staticmethod
     def menu():
@@ -17,7 +17,7 @@ class UI:
         return int(input("Informe uma opção: "))
 
     @staticmethod
-    def inserir():
+    def cliente_inserir():
         id = int(input("Informe o id: "))
         nome = input("Informe o nome: ")
         email = input("Informe o e-mail: ")
@@ -25,11 +25,11 @@ class UI:
         Service.cliente_inserir(id, nome, email, fone)
 
     @staticmethod
-    def listar():
+    def cliente_listar():
         for obj in Service.cliente_listar(): print(obj)
 
     @staticmethod
-    def atualizar():
+    def cliente_atualizar():
         for obj in Service().cliente_listar(): print(obj)
         id = int(input("Informe o id do cliente a ser atualizado: "))
         nome = input("Informe o novo nome: ")
@@ -38,7 +38,7 @@ class UI:
         Service.cliente_atualizar(id, nome, email, fone)
 
     @staticmethod
-    def excluir():
+    def cliente_excluir():
         for obj in Service().cliente_listar(): print(obj)
         id = int(input("Informe o id do cliente a ser excluído: "))
         Service.cliente_excluir(id)
