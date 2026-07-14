@@ -65,7 +65,7 @@ class UI:
 
     @staticmethod
     def servico_atualizar():
-        for obj in Service().servico_listar(): print(obj)
+        for obj in Service.servico_listar(): print(obj)
         id = int(input("Informe o id do serviço a ser atualizado: "))
         descricao = input("Informe a nova descrição: ")
         valor = float(input("Informe o novo valor: "))
@@ -73,7 +73,7 @@ class UI:
 
     @staticmethod
     def servico_excluir():
-        for obj in Service().servico_listar(): print(obj)
+        for obj in Service.servico_listar(): print(obj)
         id = int(input("Informe o id do serviço a ser excluído: "))
         Service.servico_excluir(id)
 
