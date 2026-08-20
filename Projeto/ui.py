@@ -27,11 +27,11 @@ class UI:
 
     @staticmethod
     def cliente_inserir():
-        id = int(input("Informe o id: "))
+        #id = int(input("Informe o id: "))
         nome = input("Informe o nome: ")
         email = input("Informe o e-mail: ")
         fone = input("Informe o telefone: ")
-        Service.cliente_inserir(id, nome, email, fone)
+        Service.cliente_inserir(nome, email, fone)
 
     @staticmethod
     def cliente_listar():
@@ -54,10 +54,10 @@ class UI:
 
     @staticmethod
     def servico_inserir():
-        id = int(input("Informe o id: "))
+        #id = int(input("Informe o id: "))
         descricao = input("Informe a descrição: ")
         valor = float(input("Informe o valor: "))
-        Service.servico_inserir(id, descricao, valor)
+        Service.servico_inserir(descricao, valor)
 
     @staticmethod
     def servico_listar():

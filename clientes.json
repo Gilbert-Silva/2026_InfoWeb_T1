@@ -3,21 +3,12 @@
     "id": 1,
     "nome": "Douglas Crockford",
     "email": "d@email.com",
-    "fone": "123456789",
-    "data_ultima_compra": "10/08/2026"
+    "fone": "123456789"
   },
   {
     "id": 2,
     "nome": "Jon Bosak",
     "email": "jon@email.com",
-    "fone": "987654321",
-    "data_ultima_compra": "10/08/2026"
-  },
-  {
-    "id": 3,
-    "nome": "fernando",
-    "email": "f@email.com",
-    "fone": "9999888777",
-    "data_ultima_compra": "10/08/2025"
+    "fone": "987654321"
   }
 ]
